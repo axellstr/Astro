@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroPepe - The First Pepe in Space</title>
+    <link rel="stylesheet" href="assets/styles/styles.css">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Star Animation Script -->
+    <script src="assets/scripts/stars.js"></script>
+</head>
+<body>
+    <div id="intro-overlay" style="position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.6s;">
+        <button id="enter-btn" class="cta-button">Enter</button>
+            
+    </div>
+    <audio id="bg-music" src="assets/music/music.mp3" loop></audio>
+    <div class="container">
+        <header>
+            <div class="ca-label">CA:</div>
+            <div class="contract-copy" onclick="copyContract()">
+                <span id="contract-text">0x940181...D98631</span>
+                <button id="copy-btn" class="copy-btn">
+                    <span class="copy-icon"></span>
+                </button>
+                <span id="copy-indicator" class="copy-indicator">Copied!</span>
+            </div>
+            <button id="mute-btn" class="mute-btn" aria-label="Mute/Unmute Music">
+                <span class="mute-icon">
+                    <svg id="speaker-on" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1-3.29-2.5-4.03v8.06c1.5-.74 2.5-2.26 2.5-4.03z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                    <svg id="speaker-off" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1-3.29-2.5-4.03v8.06c1.5-.74 2.5-2.26 2.5-4.03z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                </span>
+            </button>
+        </header>
+        
+        <main>
+            <div class="hero-section">
+                <div class="pepe-image">
+                    <img src="assets/images/TrPepe.png" alt="AstroPepe in Space">
+                </div>
+                <div class="hero-content">
+                    <span class="hero-tag">Space Mission 2025</span>
+                    <h1>The First Pepe in Space</h1>
+                    <p class="subtext">Join the revolutionary mission to make meme history by launching the first Pepe figure to orbit Earth on a 
+                        <span class="spacex-logo-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 50" class="spacex-logo"><g class="letter_s"><path fill="white" d="M37.5 30.5H10.9v-6.6h34.3c-.9-2.8-3.8-5.4-8.9-5.4H11.4c-5.7 0-9 2.1-9 6.7v4.9c0 4 3.4 6.3 8.4 6.3h26.9v7H1.5c.9 3.8 3.8 5.8 9 5.8h27.1c5.7 0 8.5-2.2 8.5-6.9v-4.9c0-4.3-3.3-6.6-8.6-6.9z"/></g><g class="letter_p"><path fill="white" d="M91.8 18.6H59v30.7h9.3V37.5h24.2c6.7 0 10.4-2.3 10.4-7.7v-3.4c-.1-5-4.3-7.8-11.1-7.8zm3 9.8c0 2.2-.4 3.4-4 3.4H68.3l.1-8h22c4 0 4.5 1.2 4.5 3.3v1.3z"/></g><g class="letter_a"><polygon fill="white" points="129.9,17.3 124.3,24.2 133.8,37.3 114,37.3 109.1,42.5 137.7,42.5 142.6,49.3 153.6,49.3"/></g><g class="letter_c"><path fill="white" d="M171.4 23.9h34.8c-.9-3.6-4.4-5.4-9.4-5.4h-26c-4.5 0-8.8 1.8-8.8 6.7v17.2c0 4.9 4.3 6.7 8.8 6.7h26.3c6 0 8.1-1.7 9.1-5.8h-34.8V23.9z"/></g><g class="letter_e"><polygon fill="white" points="228.3,43.5 228.3,34.1 247,34.1 247,28.9 218.9,28.9 218.9,49.3 260.4,49.3 260.4,43.5"/><rect fill="white" width="41.9" height="5.4" x="219.9" y="18.6"/></g><g class="letter_x"><path fill="white" d="M287.6 18.6H273l17.2 12.6c2.5-1.7 5.4-3.5 8-5l-10.6-7.6zm21.2 15.7c-2.5 1.7-5 3.6-7.4 5.4l13 9.5h14.7l-20.3-14.9z"/></g><g class="letter_swoosh"><path fill="white" d="M399 .7c-80 4.6-117 38.8-125.3 46.9l-1.7 1.6h14.8C326.8 9.1 384.3 2 399 .7z"/></g></svg></span> payload.</p>
+                    <div class="hero-buttons">
+                        <a href="https://x.com/astro_x_pepe" target="_blank" class="cta-button">Join the Mission</a>
+                    </div>
+                </div>
+            </div>
+            
+                
+                <!-- MARKET STATS SECTION - COMMENTED OUT FOR LATER IMPLEMENTATION
+                <div class="market-stats-section">
+                    <div class="market-stats-layout">
+                        <div class="chart-container">
+                            <iframe 
+                                src="https://dexscreener.com/base/0x4b0aaf3ebb163dd45f663b38b6d93f6093ebc2d3?embed=1&theme=dark&trades=0&info=0" 
+                                frameborder="0"
+                                width="100%" 
+                                height="600">
+                            </iframe>
+                        </div>
+                        <div class="market-stats-container">
+                            <div class="market-stat-card" id="price-card">
+                                <div class="stat-label">Price (USD)</div>
+                                <div class="stat-value" id="price-value">$0.000000</div>
+                                <div class="stat-change" id="price-change">+0.00%</div>
+                            </div>
+                            <div class="market-stat-card" id="volume-card">
+                                <div class="stat-label">Volume (24h)</div>
+                                <div class="stat-value" id="volume-value">$0</div>
+                            </div>
+                            <div class="market-stat-card" id="liquidity-card">
+                                <div class="stat-label">Liquidity</div>
+                                <div class="stat-value" id="liquidity-value">$0</div>
+                            </div>
+                            <div class="market-stat-card" id="marketcap-card">
+                                <div class="stat-label">Market Cap</div>
+                                <div class="stat-value" id="marketcap-value">$0</div>
+                            </div>
+                            <div class="last-updated">Last updated: <span id="update-time">Never</span></div>
+                        </div>
+                    </div>
+                </div>
+                -->
+                
+            
+            <div class="mission-section">
+                <div class="mission-content">
+                    <h2>Our Mission</h2>
+                    <div class="mission-text">
+                        <p>
+                            AstroPepe isn't just a memecoin—it's a movement. We're on a bold quest to make history by launching the very first Pepe figure into Earth's orbit, riding aboard a SpaceX mission.
+                            <br><br>
+                            This is more than hype. Every $ASTRO trade, every meme, every community member fuels our countdown to launch. <strong>All proceeds from $ASTRO go straight to building and sending this legendary meme payload to space.</strong>
+                            <br><br>
+                            Join us as we turn internet culture into cosmic reality. Together, we're not just aiming for the moon—we're putting Pepe in orbit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="roadmap-section" id="roadmap">
+                <h2>Roadmap</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot active-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Phase 1: Ignition</h3>
+                            <ul>
+                                <li>Launch $ASTRO token</li>
+                                <li>Build initial community of holders</li>
+                                <li>Create social media presence</li>
+                                <li>First 1,000 holders milestone</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Phase 2: Orbit</h3>
+                            <ul>
+                                <li>Major exchange listings</li>
+                                <li>Partnerships with crypto influencers</li>
+                                <li>Begin engineering payload specifications</li>
+                                <li>10,000 holders milestone</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Phase 3: Launch Prep</h3>
+                            <ul>
+                                <li>Secure payload space on SpaceX mission</li>
+                                <li>Design custom space-ready Pepe figure</li>
+                                <li>Community vote on final payload contents</li>
+                                <li>Build tracking website for orbital Pepe</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Phase 4: To The Moon</h3>
+                            <ul>
+                                <li>Launch day livestream event</li>
+                                <li>Release of limited NFT collection</li>
+                                <li>Pepe reaches orbit and history is made</li>
+                                <li>Phase 2 mission planning begins</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <input type="checkbox" id="faq-1" class="faq-checkbox">
+                        <label class="faq-question" for="faq-1">
+                            <h3>How exactly will Pepe reach orbit?</h3>
+                            <div class="faq-toggle"></div>
+                        </label>
+                        <div class="faq-answer">
+                            <p>We're partnering with a commercial space payload provider to secure a spot on a SpaceX Falcon 9 rideshare mission. Our Pepe figure will be housed in a CubeSat-sized container with a transparent viewport, allowing Pepe to "see" Earth from space. This approach is significantly more cost-effective than a dedicated launch and has been used by universities and small companies for similar projects.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <input type="checkbox" id="faq-2" class="faq-checkbox">
+                        <label class="faq-question" for="faq-2">
+                            <h3>How will the money from token sales fund the mission?</h3>
+                            <div class="faq-toggle"></div>
+                        </label>
+                        <div class="faq-answer">
+                            <p>A dedicated wallet containing 5% of the total token supply will be earmarked specifically for mission funding. As the token value increases, these funds will be used to finance payload development, secure the launch spot, and handle all logistical requirements. Additionally, we'll allocate 2% of all transaction fees to the mission wallet, ensuring continuous funding regardless of market conditions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <input type="checkbox" id="faq-3" class="faq-checkbox">
+                        <label class="faq-question" for="faq-3">
+                            <h3>How can the community participate beyond holding tokens?</h3>
+                            <div class="faq-toggle"></div>
+                        </label>
+                        <div class="faq-answer">
+                            <p>Community participation is central to our mission! Token holders will vote on key decisions including the final payload contents, Pepe's spacesuit design, and which messages from Earth will accompany Pepe to space. We'll also host regular AMAs with aerospace professionals working on our project, and the community will help design our mission patch that will be included in the payload.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <input type="checkbox" id="faq-4" class="faq-checkbox">
+                        <label class="faq-question" for="faq-4">
+                            <h3>How will we track Pepe once he's in orbit?</h3>
+                            <div class="faq-toggle"></div>
+                        </label>
+                        <div class="faq-answer">
+                            <p>Our payload will include a basic telemetry system that broadcasts location data. We're developing a dedicated tracking website where community members can see Pepe's orbital position in real-time, complete with simulated views of what Pepe might be seeing at that moment. For token holders, we'll also offer exclusive access to periodic actual imagery from the payload when it passes over partner ground stations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <input type="checkbox" id="faq-5" class="faq-checkbox">
+                        <label class="faq-question" for="faq-5">
+                            <h3>How is this different from other crypto projects promising wild ideas?</h3>
+                            <div class="faq-toggle"></div>
+                        </label>
+                        <div class="faq-answer">
+                            <p>Unlike vague promises of "going to the moon," our mission has a clearly defined, achievable goal with transparent milestones. Small satellites and payload missions to orbit happen weekly, and the costs are well-established. We're being fully transparent about the technical requirements, expected costs, and timeline. Additionally, we're assembling a team with actual aerospace experience to ensure the mission's success and will be publishing regular development updates with verifiable progress.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <div class="cta-container">
+                    <h2>Join the Mission</h2>
+                    <p class="cta-text">
+                        Whether you're a crypto enthusiast, 
+                        a space lover, or just someone who wants to be part of history - this is your chance to help send 
+                        the first Pepe to space. Together, we're not just going to the moon... we're orbiting Earth!
+                    </p>
+                    <div class="social-buttons">
+                        <a href="https://x.com/astro_x_pepe" target="_blank" class="cta-button">Get involved</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="footer-social">
+                <a href="https://x.com/astro_x_pepe" target="_blank" class="social-icon" aria-label="X (Twitter)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon-svg">
+                        <path d="M8 2H1L9.26086 13.0145L1.44995 22H4.09998L10.4883 14.431L16 22H23L14.3917 10.5223L21.8001 2H19.1501L13.1643 9.0425L8 2ZM17 20L5 4H7L19 20H17Z"></path>
+                    </svg>
+                </a>
+            </div>
+            <div class="footer-content">
+                <p>Copyright © 2025 AstroPepe. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <style>
+        /* REMOVE: Inline refresh, loading, error, and duplicate styles now in styles.css */
+    </style>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/ScrollTrigger.min.js"></script>
+    <script src="assets/scripts/script.js"></script>
+</body>
+</html>
